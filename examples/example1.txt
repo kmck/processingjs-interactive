@@ -1,0 +1,26 @@
+// All Examples Written by Casey Reas and Ben Fry
+// unless otherwise stated.
+float max_distance;
+
+void setup() {
+  size(window.innerWidth / 2, window.innerHeight);
+  smooth();
+  noStroke();
+  max_distance = dist(0, 0, width, height);
+}
+
+void draw()
+{
+  background(51);
+
+  ballSize = min(width, height) / 10;
+  distance = ballSize / 3;
+
+  for(int i = 0; i <= width + ballSize / 2; i += distance) {
+    for(int j = 0; j <= height + ballSize / 2; j += distance) {
+      float size = dist(mouseX, mouseY, i, j);
+      size = size/max_distance * ballSize;
+      ellipse(i, j, size, size);
+    }
+  }
+}
